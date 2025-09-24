@@ -1,0 +1,196 @@
+/* --- Definición de Variables de Color --- */
+:root {
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --accent-online: #4ade80;
+  --accent-offline: #f87171;
+  --accent-cyan: #22d3ee;
+  --accent-red: #ef4444;
+  --bg-dark: #111827;
+  --bg-card: rgba(31, 41, 55, 0.5);
+  --border-color: #4b5563;
+}
+
+/* --- Estilos Generales --- */
+.mainContainer {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background-color: var(--bg-dark);
+  font-family: sans-serif;
+  color: var(--text-primary);
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* --- Encabezado --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.title {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+.subtitle {
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* --- Indicador de Estado (sin cambios) --- */
+.statusPill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+}
+.statusOnline { color: var(--accent-online); }
+.statusOffline { color: var(--accent-offline); }
+.statusConnecting { color: #facc15; }
+.iconPulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+@keyframes pulse {
+  50% { opacity: .5; }
+}
+
+/* --- NUEVO: Contenedor del Visualizador 3D --- */
+.visualizerContainer {
+  height: 300px;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  cursor: grab;
+}
+.visualizerContainer:active {
+  cursor: grabbing;
+}
+
+/* --- Tarjetas de Datos --- */
+.mainGrid {
+  display: grid;
+  /* MODIFICADO: Adaptado para 2 o 3 columnas */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .mainGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent-cyan);
+  margin-bottom: 0.25rem;
+}
+.cardValue {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+.cardUnit {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* --- Panel de Control (sin cambios) --- */
+.controlPanel {
+  margin-top: 2.5rem;
+  text-align: left;
+}
+.controlPanelTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.controlGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  align-items: end;
+}
+@media (min-width: 768px) {
+  .controlGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.inputGroup, .buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.selectGroup {
+  display: flex;
+  gap: 1rem;
+}
+
+.textInput, .selectInput {
+  background-color: #1f2937;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  color: var(--text-primary);
+}
+.textInput:focus, .selectInput:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.5);
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.buttonPrimary {
+  background-color: var(--accent-cyan);
+  color: var(--bg-dark);
+}
+.buttonPrimary:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.buttonSecondary {
+  background-color: var(--accent-red);
+  color: var(--text-primary);
+}
+.buttonSecondary:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--text-secondary);
+}
