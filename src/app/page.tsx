@@ -18,7 +18,7 @@ export default function HomePage() {
   const [status, setStatus] = useState<'conectado' | 'desconectado' | 'conectando' | 'error'>('desconectado');
   const socketRef = useRef<Socket | null>(null);
   
-  const [lcdText, setLcdText] = useState<string>('Proyecto OK!');
+  const [lcdText, setLcdText] = useState<string>('');
   const [targetScreen, setTargetScreen] = useState<number>(1);
   const [targetLine, setTargetLine] = useState<number>(0);
 
